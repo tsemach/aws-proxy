@@ -1,0 +1,1 @@
+npx mocha -r ts-node/register tests/upload/upload.test.ts

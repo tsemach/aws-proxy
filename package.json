@@ -1,0 +1,36 @@
+{
+  "name": "aws-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/src/index.js",
+    "compile": "npx tsc --sourcemap --declaration",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.3.5",
+    "@types/express": "^4.17.17",
+    "@types/mocha": "^10.0.1",
+    "@types/multer": "^1.4.7",
+    "@types/node": "^20.4.2",
+    "@types/supertest": "^2.0.12",
+    "body-parser": "^1.20.2",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "reflect-metadata": "^0.1.13",
+    "supertest": "^6.3.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1415.0",
+    "express": "^4.18.2",
+    "log4js": "^6.9.1",
+    "proxy-agent": "^6.2.2",
+    "source-map-support": "^0.5.21"
+  }
+}
