@@ -8,18 +8,15 @@ const logger = Logger.get('uplaod-route')
 
 class UploadController implements Controller {
 
-  constructor() {
-    Server.instance.route('/api/', this);
+  constructor() {    
+    Server.instance.route('/', this);
   }
 
   public add(): express.Router {
     let router = express.Router();
                     
-    router.put('/upload', async (req: AWSProxyRequest, res: AWSProxyResponse) => {
-      logger.info('[/upload] route is called')
-      await new UploadService().upload(req)
-
-      res.send('{}')
+    router.get('/health', async (req: AWSProxyRequest, res: AWSProxyResponse) => {      
+      res.json({ status: 'ok' })
     })
 
     return router;

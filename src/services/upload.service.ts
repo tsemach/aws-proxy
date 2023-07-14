@@ -7,10 +7,10 @@ export class UploadService {
   constructor() {}
 
   async upload(rs: stream.Stream) {    
-    const S3 = AWS.getS3();    
+    const S3 = AWS.getS3();        
 
     try {
-      const ws = rs.pipe(new PassThrough())
+      const ws = rs.pipe(new PassThrough())      
       const reply = await S3.upload({ Bucket: 'iot-upload', Key: 'IMG_5020.JPG', Body: ws }).promise()
 
       logger.info('upload reply:', reply)

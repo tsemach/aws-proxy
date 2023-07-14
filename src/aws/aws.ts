@@ -1,5 +1,6 @@
 import proxy from 'proxy-agent'
 import AWS from 'aws-sdk'
+import { S3Client } from "@aws-sdk/client-s3";
 import Logger from '../common/logger'
 const logger = Logger.get('aws')
 
@@ -27,8 +28,27 @@ function getS3() {
   return new AWS.S3(config)
 }
 
+function getS3_V3() {
+  const { AWS_ACCESS_KEY, AWS_SECRET_KEY, AWS_S3_ENDPOINT } = process.env    
+  let config = {  
+    ...(AWS_ACCESS_KEY && {accessKeyId: AWS_ACCESS_KEY}) ,
+    ...(AWS_SECRET_KEY && {secretAccessKey: AWS_SECRET_KEY}),
+    ...(AWS_S3_ENDPOINT && {endpoint: AWS_S3_ENDPOINT}),  
+    region: process.env.AWS_REGION,
+    s3ForcePathStyle: true,
+    signatureVersion: 'v4',
+    credentials:{
+      ...(AWS_ACCESS_KEY && {accessKeyId: AWS_ACCESS_KEY}) ,
+      ...(AWS_SECRET_KEY && {secretAccessKey: AWS_SECRET_KEY})      
+    }
+  }
+  return new S3Client(config);
+}
+
+
 export {  
-  getS3
+  getS3,
+  getS3_V3
 }
 
 
