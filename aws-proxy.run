@@ -1,3 +1,5 @@
 docker build -t aws-proxy .
 docker run --name aws-proxy -p 5000:5000 --env-file local.env -it aws-proxy
+docker tag aws-proxy tsemach/aws-proxy:0.0.1
+docker push tsemach/aws-proxy:0.0.1
 npx mocha -r ts-node/register tests/upload/upload.test.ts
