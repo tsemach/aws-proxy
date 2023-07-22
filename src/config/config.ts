@@ -2,7 +2,7 @@ export class Config {
   private static _config: Config
 
   public static readonly listen = {
-    port: +process.env.PORT
+    port: +process.env.PORT ?? 3000
   }
 
   static get() {
